@@ -24,6 +24,16 @@ cv2.imwrite("sobel-operator.jpg", sobel_operator)
 canny_operator = cv2.Canny(input_image, 100, 200)
 cv2.imwrite("canny-operator.jpg", canny_operator)
 
-# Laplace Operator
+# Laplace-Operator
 laplacian_operator = cv2.Laplacian(input_image, cv2.CV_64F)
-cv2.imwrite("laplace-operator.jpg", laplacian_operator)
+
+# Normalisiere das Ergebnis
+laplacian_operator_normalized = np.absolute(laplacian_operator)
+laplacian_operator_normalized = (laplacian_operator_normalized / np.max(laplacian_operator_normalized) * 255).astype(np.uint8)
+
+# Setze einen Schwellenwert für das Laplace-Bild
+threshold = 30
+_, laplacian_thresholded = cv2.threshold(laplacian_operator_normalized, threshold, 255, cv2.THRESH_BINARY)
+
+# Speichere das Schwellenwert-Bild
+cv2.imwrite("laplace-operator.jpg", laplacian_thresholded)
