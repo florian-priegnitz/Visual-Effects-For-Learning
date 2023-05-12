@@ -25,3 +25,6 @@ Dokumentation von Python-Scripts für das Modul "Grundlagen der Bild- und Videob
 ### Gradient
 ### Laplace
 ### Sobel
+
+## Geometric Translation
+### Verschieben (engl. Translation)
